@@ -11,14 +11,17 @@
            elementFormDefault="qualified" xmlns:xml="http://www.w3.org/XML/1998/namespace"
            xmlns:dc="http://purl.org/dc/elements/1.1/"
            xmlns:datacite="http://datacite.org/schema/kernel-4" vc:minVersion="1.1"
-           xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning">
+           xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+           xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
     <xs:import namespace="http://www.w3.org/XML/1998/namespace"
-             schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
+               schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
     <xs:import namespace="http://datacite.org/schema/kernel-4"
                schemaLocation="metadata.xsd"/>
     <xs:import namespace="http://purl.org/dc/elements/1.1/"
                schemaLocation="dc.xsd"/>
+    <xs:import namespace="http://www.w3.org/1999/xhtml"
+               schemaLocation="http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd"/>
 
     <!-- isebel.purl -->
     <xs:simpleType name="typePurl">
@@ -72,11 +75,11 @@
 
     <!-- Story text. -->
     <xs:complexType name="typeContent" mixed="true">
+        <xs:sequence>
+            <xs:element ref="xhtml:div" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
         <xs:attribute ref="xml:lang" use="required"/>
         <xs:attribute name="id" type="xs:string"/>
-        <xs:sequence>
-            <xs:element ref="html:div"/>
-        </xs:sequence>
     </xs:complexType>
 
     <!-- Container type for all places. -->
